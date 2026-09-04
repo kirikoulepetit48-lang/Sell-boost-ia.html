@@ -7,9 +7,6 @@
 <title>SellBoost AI - Boostez vos ventes</title>
 
 <style>
-
-/* RESET */
-
 * {
   margin: 0;
   padding: 0;
@@ -26,9 +23,6 @@ body {
   color: #1d1d1f;
   line-height: 1.6;
 }
-
-
-/* NAVBAR */
 
 header {
   background: white;
@@ -80,14 +74,10 @@ header {
   cursor: pointer;
 }
 
-
-/* HERO */
-
 .hero {
   max-width: 1200px;
   margin: auto;
   padding: 90px 25px;
-
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 70px;
@@ -143,9 +133,6 @@ header {
   cursor: pointer;
 }
 
-
-/* HERO CARD */
-
 .hero-card {
   background: linear-gradient(135deg, #6c4cff, #9b6dff);
   padding: 20px;
@@ -163,10 +150,6 @@ header {
   font-size: 70px;
 }
 
-.product-preview h3 {
-  font-size: 25px;
-}
-
 .mini-result {
   background: #f5f3ff;
   padding: 20px;
@@ -174,9 +157,6 @@ header {
   text-align: left;
   margin-top: 20px;
 }
-
-
-/* FEATURES */
 
 .features {
   padding: 90px 25px;
@@ -200,7 +180,6 @@ header {
 .features-grid {
   max-width: 1200px;
   margin: 50px auto 0;
-
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
@@ -221,9 +200,6 @@ header {
 .feature-card p {
   color: #777;
 }
-
-
-/* GENERATOR */
 
 .generator {
   padding: 100px 25px;
@@ -251,9 +227,6 @@ header {
   padding: 40px;
   border-radius: 25px;
 }
-
-
-/* FORM */
 
 .upload-section {
   background: #faf9ff;
@@ -299,9 +272,6 @@ header {
   min-height: 130px;
 }
 
-
-/* BUTTON */
-
 .generate-btn {
   width: 100%;
   border: none;
@@ -314,8 +284,10 @@ header {
   cursor: pointer;
 }
 
-
-/* RESULT */
+.generate-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
 
 .result-box {
   margin-top: 30px;
@@ -330,8 +302,10 @@ header {
   margin-bottom: 15px;
 }
 
-
-/* FOOTER */
+#generatedContent {
+  white-space: pre-line;
+  line-height: 1.7;
+}
 
 footer {
   background: #171725;
@@ -344,11 +318,7 @@ footer p {
   color: #aaa;
 }
 
-
-/* MOBILE */
-
 @media (max-width: 850px) {
-
   .hero {
     grid-template-columns: 1fr;
     text-align: center;
@@ -361,11 +331,9 @@ footer p {
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
 }
 
 @media (max-width: 600px) {
-
   .nav-links {
     display: none;
   }
@@ -387,547 +355,476 @@ footer p {
     width: 100%;
   }
 
+  .generator-box {
+    padding: 25px 18px;
+  }
 }
-
 </style>
 </head>
-
 
 <body>
 
 <header>
+  <nav class="navbar">
 
-<nav class="navbar">
+    <div class="logo">
+      🛍️ <span>SellBoost</span> AI
+    </div>
 
-<div class="logo">
-🛍️ <span>SellBoost</span> AI
-</div>
+    <div class="nav-links">
+      <a href="#accueil">Accueil</a>
+      <a href="#fonctionnalites">Fonctionnalités</a>
+      <a href="#generateur">Créer</a>
+    </div>
 
-<div class="nav-links">
-<a href="#accueil">Accueil</a>
-<a href="#fonctionnalites">Fonctionnalités</a>
-<a href="#generateur">Créer</a>
-</div>
+    <button class="login-btn">
+      Se connecter
+    </button>
 
-<button class="login-btn">
-Se connecter
-</button>
-
-</nav>
-
+  </nav>
 </header>
-
 
 <main>
 
-
 <section class="hero" id="accueil">
 
-<div class="hero-text">
+  <div class="hero-text">
 
-<div class="badge">
-🤖 IA POUR BOOSTER VOS VENTES
-</div>
+    <div class="badge">
+      🤖 IA POUR BOOSTER VOS VENTES
+    </div>
 
-<h1>
-Transformez vos produits en
-<span>publicités qui vendent.</span>
-</h1>
+    <h1>
+      Transformez vos produits en
+      <span>publicités qui vendent.</span>
+    </h1>
 
-<p>
-Ajoutez votre produit et SellBoost AI vous aide à créer
-des descriptions, publicités, hooks et scripts pour
-TikTok, Facebook et Instagram.
-</p>
+    <p>
+      Ajoutez votre produit et SellBoost AI vous aide à créer
+      des descriptions, publicités, hooks et scripts pour
+      TikTok, Facebook et Instagram.
+    </p>
 
-<div class="hero-buttons">
+    <div class="hero-buttons">
+      <a href="#generateur" class="primary-btn">
+        🚀 Créer ma publicité
+      </a>
 
-<a href="#generateur" class="primary-btn">
-🚀 Créer ma publicité
-</a>
+      <button class="secondary-btn">
+        ▶ Voir comment ça marche
+      </button>
+    </div>
 
-<button class="secondary-btn">
-▶ Voir comment ça marche
-</button>
+  </div>
 
-</div>
+  <div class="hero-card">
 
-</div>
+    <div class="product-preview">
 
+      <div class="preview-icon">📦</div>
 
-<div class="hero-card">
+      <h3>Votre produit</h3>
 
-<div class="product-preview">
+      <p>
+        Ajoutez les informations de votre produit et laissez
+        SellBoost AI créer votre contenu.
+      </p>
 
-<div class="preview-icon">📦</div>
+      <div class="mini-result">
 
-<h3>Votre produit</h3>
+        <strong>✨ Contenu généré</strong>
 
-<p>
-Importez une photo et laissez
-SellBoost AI créer votre contenu.
-</p>
+        <p>
+          🔥 Découvrez ce produit incroyable !
+          Commandez maintenant avant la rupture de stock.
+        </p>
 
-<div class="mini-result">
+      </div>
 
-<strong>✨ Contenu généré</strong>
+    </div>
 
-<p>
-🔥 Découvrez ce produit incroyable !
-Commandez maintenant avant la rupture de stock.
-</p>
-
-</div>
-
-</div>
-
-</div>
+  </div>
 
 </section>
 
 
 <section class="features" id="fonctionnalites">
 
-<div class="section-title">
+  <div class="section-title">
 
-<span>FONCTIONNALITÉS</span>
+    <span>FONCTIONNALITÉS</span>
 
-<h2>
-Tout ce qu'il faut pour vendre plus
-</h2>
+    <h2>Tout ce qu'il faut pour vendre plus</h2>
 
-<p>
-Créez rapidement du contenu professionnel pour vos produits.
-</p>
+    <p>
+      Créez rapidement du contenu professionnel pour vos produits.
+    </p>
 
-</div>
+  </div>
 
+  <div class="features-grid">
 
-<div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">📝</div>
+      <h3>Description produit</h3>
+      <p>Créez une description professionnelle et attractive.</p>
+    </div>
 
-<div class="feature-card">
-<div class="feature-icon">📝</div>
-<h3>Description produit</h3>
-<p>Créez une description professionnelle et attractive.</p>
-</div>
+    <div class="feature-card">
+      <div class="feature-icon">📢</div>
+      <h3>Publicités</h3>
+      <p>Générez des textes pour attirer des clients.</p>
+    </div>
 
-<div class="feature-card">
-<div class="feature-icon">📢</div>
-<h3>Publicités IA</h3>
-<p>Générez des textes publicitaires pour attirer des clients.</p>
-</div>
+    <div class="feature-card">
+      <div class="feature-icon">🎣</div>
+      <h3>Hooks puissants</h3>
+      <p>Capturez immédiatement l'attention.</p>
+    </div>
 
-<div class="feature-card">
-<div class="feature-icon">🎣</div>
-<h3>Hooks puissants</h3>
-<p>Capturez immédiatement l'attention.</p>
-</div>
+    <div class="feature-card">
+      <div class="feature-icon">🎬</div>
+      <h3>Scripts vidéo</h3>
+      <p>Créez des scripts pour TikTok et Reels.</p>
+    </div>
 
-<div class="feature-card">
-<div class="feature-icon">🎬</div>
-<h3>Scripts vidéo</h3>
-<p>Créez des scripts pour TikTok et Reels.</p>
-</div>
+    <div class="feature-card">
+      <div class="feature-icon">📱</div>
+      <h3>Réseaux sociaux</h3>
+      <p>Contenu pour Facebook, Instagram et TikTok.</p>
+    </div>
 
-<div class="feature-card">
-<div class="feature-icon">📱</div>
-<h3>Réseaux sociaux</h3>
-<p>Contenu pour Facebook, Instagram et TikTok.</p>
-</div>
+    <div class="feature-card">
+      <div class="feature-icon">🚀</div>
+      <h3>CTA de vente</h3>
+      <p>Encouragez vos clients à acheter.</p>
+    </div>
 
-<div class="feature-card">
-<div class="feature-icon">🚀</div>
-<h3>CTA de vente</h3>
-<p>Encouragez vos clients à acheter.</p>
-</div>
-
-</div>
+  </div>
 
 </section>
 
 
 <section class="generator" id="generateur">
 
-<div class="generator-title">
+  <div class="generator-title">
 
-<span>SELLBOOST AI</span>
+    <span>SELLBOOST AI</span>
 
-<h2>Créez votre contenu maintenant 🚀</h2>
+    <h2>Créez votre contenu maintenant 🚀</h2>
 
-<p>
-Ajoutez les informations de votre produit.
-</p>
+    <p>
+      Ajoutez les informations de votre produit et choisissez
+      le contenu que vous voulez créer.
+    </p>
 
-</div>
-
-
-<div class="generator-box">
+  </div>
 
 
-<div class="upload-section">
+  <div class="generator-box">
 
-<label for="productImage">
-📸 Ajouter une photo du produit
-</label>
+    <div class="upload-section">
 
-<input type="file" id="productImage" accept="image/*">
+      <label for="productImage">
+        📸 Ajouter une photo du produit
+      </label>
 
-<p id="imageName">
-Aucune image sélectionnée
-</p>
+      <input
+        type="file"
+        id="productImage"
+        accept="image/*"
+      >
 
-</div>
+      <p id="imageName">
+        Aucune image sélectionnée
+      </p>
 
-
-<div class="input-group">
-
-<label>Nom du produit</label>
-
-<input
-type="text"
-id="productName"
-placeholder="Exemple : Chaussures Nike Air Max">
-
-</div>
+    </div>
 
 
-<div class="input-group">
+    <div class="input-group">
 
-<label>Informations sur le produit</label>
+      <label for="productName">
+        Nom du produit
+      </label>
 
-<textarea
-id="productDescription"
-placeholder="Décrivez votre produit...">
-</textarea>
+      <input
+        type="text"
+        id="productName"
+        placeholder="Exemple : Chaussures Nike Air Max"
+      >
 
-</div>
-
-
-<div class="input-group">
-
-<label>Que voulez-vous créer ?</label>
-
-<select id="contentType">
-
-<option value="description">
-📝 Description professionnelle
-</option>
-
-<option value="advertisement">
-📢 Publicité
-</option>
-
-<option value="tiktok">
-🎬 Script TikTok
-</option>
-
-<option value="hook">
-🎣 Hook accrocheur
-</option>
-
-<option value="cta">
-🚀 Call To Action
-</option>
-
-<option value="instagram">
-📸 Publication Instagram
-</option>
-
-<option value="facebook">
-📘 Publication Facebook
-</option>
-
-</select>
-
-</div>
+    </div>
 
 
-<button class="generate-btn" id="generateBtn">
+    <div class="input-group">
 
-✨ Générer avec SellBoost AI
+      <label for="productDescription">
+        Informations sur le produit
+      </label>
 
-</button>
+      <textarea
+        id="productDescription"
+        placeholder="Décrivez votre produit..."
+      ></textarea>
+
+    </div>
 
 
-<div class="result-box">
+    <div class="input-group">
 
-<h3>
-🤖 Résultat généré
-</h3>
+      <label for="contentType">
+        Que voulez-vous créer ?
+      </label>
 
-<div id="generatedContent">
-Votre contenu apparaîtra ici...
-</div>
+      <select id="contentType">
 
-</div>
+        <option value="description">
+          📝 Description professionnelle
+        </option>
 
-</div>
+        <option value="advertisement">
+          📢 Publicité
+        </option>
+
+        <option value="tiktok">
+          🎬 Script TikTok
+        </option>
+
+        <option value="hook">
+          🎣 Hook accrocheur
+        </option>
+
+        <option value="cta">
+          🚀 Call To Action
+        </option>
+
+        <option value="instagram">
+          📸 Publication Instagram
+        </option>
+
+        <option value="facebook">
+          📘 Publication Facebook
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <button class="generate-btn" id="generateBtn">
+      ✨ Générer avec SellBoost AI
+    </button>
+
+
+    <div class="result-box">
+
+      <h3>🤖 Résultat généré</h3>
+
+      <div id="generatedContent">
+        Votre contenu apparaîtra ici...
+      </div>
+
+    </div>
+
+  </div>
 
 </section>
-
 
 </main>
 
 
 <footer>
 
-<h3>🛍️ SellBoost AI</h3>
+  <h3>🛍️ SellBoost AI</h3>
 
-<p>
-© 2026 SellBoost AI — Créez. Attirez. Vendez. 🚀
-</p>
+  <p>
+    © 2026 SellBoost AI — Créez. Attirez. Vendez. 🚀
+  </p>
 
 </footer>
 
 
 <script>
 
-const productImage = document.getElementById("productImage");
-const imageName = document.getElementById("imageName");
+// ===================================
+// LIEN DU BACKEND RENDER
+// ===================================
 
-const productName = document.getElementById("productName");
-const productDescription = document.getElementById("productDescription");
-
-const contentType = document.getElementById("contentType");
-
-const generateBtn = document.getElementById("generateBtn");
-
-const generatedContent = document.getElementById("generatedContent");
+const BACKEND_URL =
+  "https://moteur-sell-boost-backend-html.onrender.com";
 
 
-/* IMAGE */
+// ===================================
+// RÉCUPÉRATION DES ÉLÉMENTS
+// ===================================
+
+const productImage =
+  document.getElementById("productImage");
+
+const imageName =
+  document.getElementById("imageName");
+
+const productName =
+  document.getElementById("productName");
+
+const productDescription =
+  document.getElementById("productDescription");
+
+const contentType =
+  document.getElementById("contentType");
+
+const generateBtn =
+  document.getElementById("generateBtn");
+
+const generatedContent =
+  document.getElementById("generatedContent");
+
+
+// ===================================
+// AFFICHER LE NOM DE L'IMAGE
+// ===================================
 
 productImage.addEventListener("change", function () {
 
-if (productImage.files.length > 0) {
+  if (productImage.files.length > 0) {
 
-imageName.textContent =
-"📸 Image sélectionnée : " +
-productImage.files[0].name;
+    imageName.textContent =
+      "📸 Image sélectionnée : " +
+      productImage.files[0].name;
 
-}
+  } else {
+
+    imageName.textContent =
+      "Aucune image sélectionnée";
+
+  }
 
 });
 
 
-/* GÉNÉRATION */
+// ===================================
+// GÉNÉRER LE CONTENU
+// ===================================
 
-generateBtn.addEventListener("click", function () {
+generateBtn.addEventListener("click", async function () {
 
-const name = productName.value.trim();
+  const name =
+    productName.value.trim();
 
-const description =
-productDescription.value.trim();
+  const description =
+    productDescription.value.trim();
 
-const type = contentType.value;
+  const type =
+    contentType.value;
 
 
-if (name === "") {
+  // Vérification
 
-generatedContent.innerHTML =
-"⚠️ Veuillez entrer le nom de votre produit.";
+  if (!name) {
 
-return;
+    generatedContent.textContent =
+      "⚠️ Veuillez entrer le nom de votre produit.";
 
-}
+    return;
 
+  }
 
-generateBtn.textContent =
-"⏳ Génération en cours...";
 
-generateBtn.disabled = true;
+  // Chargement
 
+  generateBtn.textContent =
+    "⏳ Génération en cours...";
 
-setTimeout(function () {
+  generateBtn.disabled = true;
 
-let result = "";
+  generatedContent.textContent =
+    "🤖 SellBoost AI prépare votre contenu...";
 
 
-/* DESCRIPTION */
+  try {
 
-if (type === "description") {
+    // ===================================
+    // ENVOYER LES DONNÉES AU BACKEND
+    // ===================================
 
-result = `
-✨ <strong>${name}</strong><br><br>
+    const response = await fetch(
+      BACKEND_URL + "/generate",
+      {
 
-Découvrez ${name}, un produit conçu pour vous offrir
-qualité et satisfaction.
+        method: "POST",
 
-${description ? "<br><br>📦 " + description : ""}
+        headers: {
+          "Content-Type": "application/json"
+        },
 
-<br><br>
+        body: JSON.stringify({
 
-🔥 Commandez maintenant !
-`;
+          productName: name,
 
-}
+          productDescription: description,
 
+          contentType: type
 
-/* PUBLICITÉ */
+        })
 
-else if (type === "advertisement") {
+      }
+    );
 
-result = `
-🚨 <strong>OFFRE SPÉCIALE !</strong> 🚨
 
-<br><br>
+    // Vérifier la réponse
 
-🔥 Découvrez <strong>${name}</strong> !
+    const data =
+      await response.json();
 
-${description ? "<br><br>" + description : ""}
 
-<br><br>
+    if (!response.ok) {
 
-⏳ Ne manquez pas cette opportunité !
+      throw new Error(
+        data.message ||
+        "Une erreur est survenue."
+      );
 
-<br><br>
+    }
 
-👉 Commandez maintenant avant la rupture de stock !
-`;
 
-}
+    // Afficher le contenu
 
+    if (data.succes) {
 
-/* TIKTOK */
+      generatedContent.textContent =
+        data.contenu;
 
-else if (type === "tiktok") {
+    } else {
 
-result = `
-🎬 <strong>SCRIPT TIKTOK</strong>
+      generatedContent.textContent =
+        "⚠️ " +
+        (data.message ||
+        "Impossible de générer le contenu.");
 
-<br><br>
+    }
 
-🎣 HOOK :
-"Attendez une seconde... vous devez voir ça ! 😱"
 
-<br><br>
+  } catch (error) {
 
-📦 Voici ${name} !
+    console.error(error);
 
-${description ? "<br><br>" + description : ""}
+    generatedContent.textContent =
+      "❌ Impossible de contacter le backend. Vérifiez votre connexion ou réessayez dans quelques instants.";
 
-<br><br>
+  }
 
-🚀 CTA :
-"Commandez maintenant avant qu'il ne soit trop tard !"
-`;
 
-}
+  // Remettre le bouton
 
+  generateBtn.textContent =
+    "✨ Générer avec SellBoost AI";
 
-/* HOOK */
-
-else if (type === "hook") {
-
-result = `
-🎣 <strong>HOOKS ACCROCHEURS</strong>
-
-<br><br>
-
-😱 "Personne ne vous dit ça sur ${name}..."
-
-<br><br>
-
-🔥 "Vous devez absolument voir ce produit !"
-
-<br><br>
-
-🚨 "Ce produit est en train de devenir viral..."
-`;
-
-}
-
-
-/* CTA */
-
-else if (type === "cta") {
-
-result = `
-🚀 <strong>CALL TO ACTION</strong>
-
-<br><br>
-
-👉 Commandez maintenant !
-
-<br><br>
-
-🔥 Profitez de l'offre !
-
-<br><br>
-
-⏳ Stock limité, dépêchez-vous !
-
-<br><br>
-
-💥 Obtenez votre ${name} dès aujourd'hui !
-`;
-
-}
-
-
-/* INSTAGRAM */
-
-else if (type === "instagram") {
-
-result = `
-✨ <strong>${name}</strong> ✨
-
-<br><br>
-
-Découvrez notre incroyable produit 🔥
-
-${description ? "<br><br>" + description : ""}
-
-<br><br>
-
-😍 Commandez maintenant !
-
-<br><br>
-
-#Produit #Shopping #Promo #Vente #SellBoostAI
-`;
-
-}
-
-
-/* FACEBOOK */
-
-else if (type === "facebook") {
-
-result = `
-🔥 <strong>NOUVEAUTÉ !</strong> 🔥
-
-<br><br>
-
-Découvrez notre ${name} !
-
-${description ? "<br><br>" + description : ""}
-
-<br><br>
-
-📩 Contactez-nous dès maintenant pour commander.
-
-<br><br>
-
-🚀 Stock limité !
-`;
-
-}
-
-
-generatedContent.innerHTML = result;
-
-generateBtn.textContent =
-"✨ Générer avec SellBoost AI";
-
-generateBtn.disabled = false;
-
-}, 1000);
+  generateBtn.disabled = false;
 
 });
 
 </script>
-
 
 </body>
   </html>
