@@ -24,6 +24,8 @@ body {
   line-height: 1.6;
 }
 
+/* NAVIGATION */
+
 header {
   background: white;
   border-bottom: 1px solid #e8e8e8;
@@ -73,6 +75,8 @@ header {
   border-radius: 10px;
   cursor: pointer;
 }
+
+/* HERO */
 
 .hero {
   max-width: 1200px;
@@ -133,6 +137,8 @@ header {
   cursor: pointer;
 }
 
+/* HERO CARD */
+
 .hero-card {
   background: linear-gradient(135deg, #6c4cff, #9b6dff);
   padding: 20px;
@@ -157,6 +163,8 @@ header {
   text-align: left;
   margin-top: 20px;
 }
+
+/* FEATURES */
 
 .features {
   padding: 90px 25px;
@@ -201,6 +209,8 @@ header {
   color: #777;
 }
 
+/* GENERATOR */
+
 .generator {
   padding: 100px 25px;
   background: #f7f8fc;
@@ -228,6 +238,8 @@ header {
   border-radius: 25px;
 }
 
+/* UPLOAD IMAGE */
+
 .upload-section {
   background: #faf9ff;
   border: 2px dashed #6c4cff;
@@ -241,12 +253,25 @@ header {
   display: block;
   font-weight: bold;
   margin-bottom: 15px;
+  cursor: pointer;
 }
 
 #imageName {
   margin-top: 10px;
   color: #777;
 }
+
+#imagePreview {
+  width: 100%;
+  max-width: 300px;
+  max-height: 300px;
+  object-fit: contain;
+  margin-top: 20px;
+  border-radius: 15px;
+  border: 2px solid #6c4cff;
+}
+
+/* FORM */
 
 .input-group {
   margin-bottom: 22px;
@@ -272,10 +297,12 @@ header {
   min-height: 130px;
 }
 
-.generate-btn {
+/* BUTTONS */
+
+.generate-btn,
+.copy-btn {
   width: 100%;
   border: none;
-  background: linear-gradient(135deg, #6c4cff, #8c62ff);
   color: white;
   padding: 17px;
   border-radius: 12px;
@@ -284,10 +311,21 @@ header {
   cursor: pointer;
 }
 
+.generate-btn {
+  background: linear-gradient(135deg, #6c4cff, #8c62ff);
+}
+
+.copy-btn {
+  background: #171725;
+  margin-top: 15px;
+}
+
 .generate-btn:disabled {
   opacity: 0.7;
   cursor: not-allowed;
 }
+
+/* RESULT */
 
 .result-box {
   margin-top: 30px;
@@ -307,6 +345,8 @@ header {
   line-height: 1.7;
 }
 
+/* FOOTER */
+
 footer {
   background: #171725;
   color: white;
@@ -317,6 +357,8 @@ footer {
 footer p {
   color: #aaa;
 }
+
+/* MOBILE */
 
 @media (max-width: 850px) {
   .hero {
@@ -377,9 +419,7 @@ footer p {
       <a href="#generateur">Créer</a>
     </div>
 
-    <button class="login-btn">
-      Se connecter
-    </button>
+    <button class="login-btn">Se connecter</button>
 
   </nav>
 </header>
@@ -390,9 +430,7 @@ footer p {
 
   <div class="hero-text">
 
-    <div class="badge">
-      🤖 IA POUR BOOSTER VOS VENTES
-    </div>
+    <div class="badge">🤖 IA POUR BOOSTER VOS VENTES</div>
 
     <h1>
       Transformez vos produits en
@@ -418,7 +456,6 @@ footer p {
   </div>
 
   <div class="hero-card">
-
     <div class="product-preview">
 
       <div class="preview-icon">📦</div>
@@ -431,18 +468,15 @@ footer p {
       </p>
 
       <div class="mini-result">
-
         <strong>✨ Contenu généré</strong>
 
         <p>
           🔥 Découvrez ce produit incroyable !
           Commandez maintenant avant la rupture de stock.
         </p>
-
       </div>
 
     </div>
-
   </div>
 
 </section>
@@ -514,8 +548,7 @@ footer p {
     <h2>Créez votre contenu maintenant 🚀</h2>
 
     <p>
-      Ajoutez les informations de votre produit et choisissez
-      le contenu que vous voulez créer.
+      Ajoutez votre photo et les informations de votre produit.
     </p>
 
   </div>
@@ -538,6 +571,13 @@ footer p {
       <p id="imageName">
         Aucune image sélectionnée
       </p>
+
+      <img
+        id="imagePreview"
+        src=""
+        alt="Prévisualisation du produit"
+        style="display: none;"
+      >
 
     </div>
 
@@ -625,6 +665,10 @@ footer p {
         Votre contenu apparaîtra ici...
       </div>
 
+      <button class="copy-btn" id="copyBtn">
+        📋 Copier le résultat
+      </button>
+
     </div>
 
   </div>
@@ -647,23 +691,21 @@ footer p {
 
 <script>
 
-// ===================================
-// LIEN DU BACKEND RENDER
-// ===================================
-
+// LIEN DU BACKEND
 const BACKEND_URL =
   "https://moteur-sell-boost-backend-html.onrender.com";
 
 
-// ===================================
-// RÉCUPÉRATION DES ÉLÉMENTS
-// ===================================
+// ÉLÉMENTS HTML
 
 const productImage =
   document.getElementById("productImage");
 
 const imageName =
   document.getElementById("imageName");
+
+const imagePreview =
+  document.getElementById("imagePreview");
 
 const productName =
   document.getElementById("productName");
@@ -680,32 +722,49 @@ const generateBtn =
 const generatedContent =
   document.getElementById("generatedContent");
 
+const copyBtn =
+  document.getElementById("copyBtn");
 
-// ===================================
-// AFFICHER LE NOM DE L'IMAGE
-// ===================================
+
+// PRÉVISUALISATION DE L'IMAGE
 
 productImage.addEventListener("change", function () {
 
-  if (productImage.files.length > 0) {
+  const file = productImage.files[0];
+
+  if (file) {
 
     imageName.textContent =
-      "📸 Image sélectionnée : " +
-      productImage.files[0].name;
+      "📸 Image sélectionnée : " + file.name;
+
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+
+      imagePreview.src =
+        event.target.result;
+
+      imagePreview.style.display =
+        "block";
+
+    };
+
+    reader.readAsDataURL(file);
 
   } else {
 
     imageName.textContent =
       "Aucune image sélectionnée";
 
+    imagePreview.style.display =
+      "none";
+
   }
 
 });
 
 
-// ===================================
-// GÉNÉRER LE CONTENU
-// ===================================
+// GÉNÉRATION
 
 generateBtn.addEventListener("click", async function () {
 
@@ -719,8 +778,6 @@ generateBtn.addEventListener("click", async function () {
     contentType.value;
 
 
-  // Vérification
-
   if (!name) {
 
     generatedContent.textContent =
@@ -730,8 +787,6 @@ generateBtn.addEventListener("click", async function () {
 
   }
 
-
-  // Chargement
 
   generateBtn.textContent =
     "⏳ Génération en cours...";
@@ -743,10 +798,6 @@ generateBtn.addEventListener("click", async function () {
 
 
   try {
-
-    // ===================================
-    // ENVOYER LES DONNÉES AU BACKEND
-    // ===================================
 
     const response = await fetch(
       BACKEND_URL + "/generate",
@@ -772,8 +823,6 @@ generateBtn.addEventListener("click", async function () {
     );
 
 
-    // Vérifier la réponse
-
     const data =
       await response.json();
 
@@ -787,8 +836,6 @@ generateBtn.addEventListener("click", async function () {
 
     }
 
-
-    // Afficher le contenu
 
     if (data.succes) {
 
@@ -810,17 +857,62 @@ generateBtn.addEventListener("click", async function () {
     console.error(error);
 
     generatedContent.textContent =
-      "❌ Impossible de contacter le backend. Vérifiez votre connexion ou réessayez dans quelques instants.";
+      "❌ Impossible de contacter le backend. Réessayez dans quelques instants.";
 
   }
 
-
-  // Remettre le bouton
 
   generateBtn.textContent =
     "✨ Générer avec SellBoost AI";
 
   generateBtn.disabled = false;
+
+});
+
+
+// COPIER LE RÉSULTAT
+
+copyBtn.addEventListener("click", async function () {
+
+  const text =
+    generatedContent.textContent.trim();
+
+
+  if (
+    !text ||
+    text === "Votre contenu apparaîtra ici..."
+  ) {
+
+    alert("⚠️ Générez d'abord un contenu.");
+
+    return;
+
+  }
+
+
+  try {
+
+    await navigator.clipboard.writeText(text);
+
+    copyBtn.textContent =
+      "✅ Résultat copié !";
+
+
+    setTimeout(function () {
+
+      copyBtn.textContent =
+        "📋 Copier le résultat";
+
+    }, 2000);
+
+
+  } catch (error) {
+
+    alert(
+      "Impossible de copier automatiquement."
+    );
+
+  }
 
 });
 
